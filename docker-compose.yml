@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  webserver:
+    container_name: "${PROJECT_NAME}-${PHPVERSION}"
+    build:
+      context: ./bin/${PHPVERSION}
+    volumes: 
+      - ./www:/var/www/html:rw
+      - ./config/vhosts:/etc/apache2/sites-enabled
+      - ./config/php/php.ini:/usr/local/etc/php/php.ini
+      - ./logs/apache2:/var/log/apache2
+    ports:
+      - 5500:80
+    links:
+      - database
+  database:
+    container_name: "${PROJECT_NAME}-${DATABASE}"
+    build: 
+      context: ./bin/${DATABASE}
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./logs/mysql:/var/log/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - 8080:80
+    links:
+      - database
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
