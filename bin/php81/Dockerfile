@@ -9,6 +9,7 @@ RUN apt-get -y update --fix-missing && \
 # Install useful tools and install important libaries
 RUN apt-get -y update && \
     apt-get -y --no-install-recommends install nano wget \
+    cron \
     dialog \
     libsqlite3-dev \
     libsqlite3-0 && \
@@ -30,7 +31,6 @@ RUN apt-get -y update && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Other PHP8 Extensions
-
 RUN docker-php-ext-install pdo_mysql && \
     docker-php-ext-install pdo_sqlite && \
     docker-php-ext-install mysqli && \
