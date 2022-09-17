@@ -4,8 +4,8 @@ services:
     container_name: "${PROJECT_NAME}-${PHPVERSION}"
     build:
       context: ./bin/${PHPVERSION}
-    volumes: 
-      - ./www:/var/www/html:rw
+    volumes:
+      - ./html:/var/www/html:rw
       - ./config/vhosts:/etc/apache2/sites-enabled
       - ./config/php/php.ini:/usr/local/etc/php/php.ini
       - ./logs/apache2:/var/log/apache2
@@ -13,8 +13,8 @@ services:
       - ${WEBSERVER_PORT}:80
     links:
       - database
-    environment:
-      - TZ=Europe/Paris
+    # environment:
+    #   TZ: ${TIMEZONE}
   database:
     container_name: "${PROJECT_NAME}-${DATABASE}"
     build: 
