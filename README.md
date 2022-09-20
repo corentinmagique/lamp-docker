@@ -15,7 +15,6 @@ git clone https://github.com/corentinmagique/lamp-docker.git
 Configure .env file :
 
 ```
-#GENERAL 
 PROJECT_NAME=LAMP #Project name 
 PHPVERSION=php81 #Php version, at the moment only php81 is supported.
 DATABASE=mariadblatest #Possible values : mariadblatest or mysqllatest
@@ -29,5 +28,12 @@ MYSQL_TCP_PORT=52000 #Database port
 
 WEBSERVER_PORT=5501 #Server port
 PMA_PORT=8081 #Phpmyadmin port
+```
+
+Configure config/php/php.ini (PHP Config file) && config/vhost/default.conf (APACHE VHOST config)
+
+Then run : 
+```
+docker-compose up -d
 ```
 
