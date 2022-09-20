@@ -36,10 +36,32 @@ MYSQL_TCP_PORT=52000 #Database port
 WEBSERVER_PORT=5501 #Server port
 PMA_PORT=8081 #Phpmyadmin port
 ```
-- Configure `config/php/php.ini` (PHP Config file) && `config/vhost/default.conf` (APACHE VHOST config)
+- Configure `config/php/php.ini` && `config/vhost/default.conf`
 
 - Then run : 
 ```
 docker-compose up -d
+```
+
+### PHP Extensions
+
+At the moment : 
+
+- pdo_mysql
+- exif
+
+You can add more in the corresponding `Dockerfile` (file in `bin/phpX.X/`) : 
+
+```
+RUN docker-php-ext-install pdo_mysql && \
+    docker-php-ext-install exif 
+```
+
+### Cron
+
+If you need crons, configure `cron` file and run (in the webserver shell) :
+
+```
+crontab /etc/cron.d/cron && service cron start
 ```
 
