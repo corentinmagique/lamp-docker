@@ -1,4 +1,4 @@
 /.vscode
-/data/*
+/data/mysql
 /logs/*
 .DS_Store

@@ -30,3 +30,4 @@ MYSQL_TCP_PORT=52000 #Database port
 WEBSERVER_PORT=5501 #Server port
 PMA_PORT=8081 #Phpmyadmin port
 ```
+

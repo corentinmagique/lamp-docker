@@ -1,6 +1,6 @@
 FROM php:8.1-apache
 
-ENV TZ=Indian/Reunion
+ARG TZ
 
 RUN cp /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt update
