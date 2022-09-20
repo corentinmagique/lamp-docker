@@ -13,15 +13,13 @@ At the moment, there is one PHP version :
 
 ## Installation
 
-Clone the repository:
+- Clone the repository :
 
 ```
 git clone https://github.com/corentinmagique/lamp-docker.git
 ```
 
-## Usage 
-
-Configure `.env file` :
+- Configure `.env file` :
 
 ```
 PROJECT_NAME=LAMP #Project name 
@@ -38,10 +36,9 @@ MYSQL_TCP_PORT=52000 #Database port
 WEBSERVER_PORT=5501 #Server port
 PMA_PORT=8081 #Phpmyadmin port
 ```
+- Configure `config/php/php.ini` (PHP Config file) && `config/vhost/default.conf` (APACHE VHOST config)
 
-Configure `config/php/php.ini` (PHP Config file) && `config/vhost/default.conf` (APACHE VHOST config)
-
-Then run : 
+- Then run : 
 ```
 docker-compose up -d
 ```
