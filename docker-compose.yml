@@ -5,10 +5,13 @@ services:
     build:
       context: ./bin/${PHPVERSION}
     volumes:
+      - ./:/${PROJECT_NAME}
       - ./html:/var/www/html:rw
       - ./config/vhosts:/etc/apache2/sites-enabled
       - ./config/php/php.ini:/usr/local/etc/php/php.ini
       - ./logs/apache2:/var/log/apache2
+      - ./cron:/etc/cron.d/cron
+      - ./logs/cron:/var/logs/cron
     ports:
       - ${WEBSERVER_PORT}:80
     links:

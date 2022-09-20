@@ -1,0 +1,7 @@
+#     ,------ MINUTE
+#    / ,----- HOUR
+#   / / ,---- DAY OF MONTH
+#  / / / ,--- MONTH
+# / / / / ,-- DAY OF WEEK
+#/ / / / /
+* * * * *  echo "`date`: hello, world" >> /var/logs/cron/cron.log
